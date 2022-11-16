@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import PokemonList from './src/components/AnimationList';
+import AnimationList from './src/components/AnimationList';
 import Modal from './src/components/Modal';
-import PokemonCard from './src/components/AnimationCard';
+import AnimationCard from './src/components/AnimationCard';
 
 import './sass/style.css';
 
@@ -11,7 +11,7 @@ interface AppProps {}
 interface AppState {
   modalVisible: boolean;
   modalContent: any;
-  randomPokemon: object;
+  randomAnimation: object;
   scrollable: boolean;
 }
 
@@ -22,7 +22,7 @@ class App extends Component<AppProps, AppState> {
     this.state = {
       modalVisible: false,
       modalContent: '',
-      randomPokemon: {},
+      randomAnimation: {},
       scrollable: true,
     };
 
@@ -32,7 +32,7 @@ class App extends Component<AppProps, AppState> {
 
   apiBasePath = 'https://pokeapi.co/api/v2/';
 
-  async fetchRandomPokemon() {
+  async fetchRandomAnimation() {
     const apiCall = await fetch(
       this.apiBasePath + 'pokemon/' + this.generateRandomInteger(1, 800)
     );
@@ -42,7 +42,7 @@ class App extends Component<AppProps, AppState> {
 
     this.setState((state, props) => {
       return {
-        modalContent: <PokemonCard pokemon={data} />,
+        modalContent: <AnimationCard animation={data} />,
         modalVisible: true,
         scrollable: false,
       };
@@ -54,13 +54,13 @@ class App extends Component<AppProps, AppState> {
   }
 
   componentDidMount() {
-    this.fetchRandomPokemon();
+    this.fetchRandomAnimation();
   }
 
   handleItemClick(item: any) {
     this.setState((state, props) => {
       return {
-        modalContent: <PokemonCard pokemon={item} />,
+        modalContent: <AnimationCard animation={item} />,
         modalVisible: true,
         scrollable: false,
       };
@@ -86,7 +86,7 @@ class App extends Component<AppProps, AppState> {
             onModalClose={this.handleModalClose}
           />
         )}
-        <PokemonList
+        <AnimationList
           onItemClick={this.handleItemClick}
           scrollable={this.state.scrollable}
         />
