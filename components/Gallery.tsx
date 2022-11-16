@@ -12,4 +12,3 @@ export const Gallery: FunctionComponent<GalleryItem> = ({ title, image }) => (
     {image}
   </aside>
 );
-
