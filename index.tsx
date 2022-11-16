@@ -5,7 +5,7 @@ import PokemonList from './src/components/AnimationList';
 import Modal from './src/components/Modal';
 import PokemonCard from './src/components/AnimationCard';
 
-import './style.css';
+import './sass/style.css';
 
 interface AppProps {}
 interface AppState {

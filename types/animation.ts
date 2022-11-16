@@ -1,4 +1,4 @@
-export interface Card {
+export interface Animation {
   id: number;
   name: string;
   height: number;
