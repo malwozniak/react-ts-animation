@@ -43,7 +43,6 @@ function AnimationCard({ Animation }: AnimationCardProps) {
               Animation={Animation}
               description={AnimationDescription}
             />
-            <StatsWrapper></StatsWrapper>
           </DoubleColumnCard>
         </div>
       )}
@@ -80,12 +79,6 @@ const DoubleColumnCard = styled.div`
 
   @media ${device.laptop} { 
    flex-direction: row; 
-  }
-`;
-
-const StatsWrapper = styled.div`
-  @media ${device.laptop} { 
-    width: 60%;
   }
 `;
 
