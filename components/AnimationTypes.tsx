@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { AnimationTypeItem } from '../types/animation';
 
 type AnimationTypesProps = {
-  types: PokemonTypeItem[];
+  types: AnimationTypeItem[];
 };
 
 function AnimationTypes({ types }: AnimationTypesProps) {
