@@ -30,11 +30,11 @@ class App extends Component<AppProps, AppState> {
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
-  apiBasePath = 'https://pokeapi.co/api/v2/';
+  apiBasePath = 'https://https://react-ts-uimc6b.stackblitz.io/;
 
   async fetchRandomAnimation() {
     const apiCall = await fetch(
-      this.apiBasePath + 'pokemon/' + this.generateRandomInteger(1, 800)
+      this.apiBasePath + 'animation/' + this.generateRandomInteger(1, 10)
     );
     const data = await apiCall.json();
 
