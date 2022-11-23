@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-
 import AnimationList from './src/components/AnimationList';
 import Modal from './src/components/Modal';
 import AnimationCard from './src/components/AnimationCard';
-
-import './sass/style.css';
 
 interface AppProps {}
 interface AppState {
   modalVisible: boolean;
   modalContent: any;
   randomAnimation: object;
-  scrollable: boolean;
 }
 
 class App extends Component<AppProps, AppState> {
@@ -23,28 +19,34 @@ class App extends Component<AppProps, AppState> {
       modalVisible: false,
       modalContent: '',
       randomAnimation: {},
-      scrollable: true,
     };
 
     this.handleModalClose = this.handleModalClose.bind(this);
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
-  apiBasePath = 'https://https://react-ts-uimc6b.stackblitz.io/;
+  apiBasePath = 'https://https://react-ts-uimc6b.stackblitz.io/';
 
   async fetchRandomAnimation() {
     const apiCall = await fetch(
-      this.apiBasePath + 'animation/' + this.generateRandomInteger(1, 10)
+      this.apiBasePath + 'animation/' + this.generateRandomInteger(1, 3)
     );
-    const data = await apiCall.json();
 
+    const data = await apiCall.json();
+    fetch(data)
+      .then((res) => res.json())
+      .then((dataa) => {
+        console.log('is working');
+      })
+      .catch((rejected) => {
+        console.log(rejected);
+      });
     console.log(data);
 
     this.setState((state, props) => {
       return {
         modalContent: <AnimationCard animation={data} />,
         modalVisible: true,
-        scrollable: false,
       };
     });
   }
@@ -62,7 +64,6 @@ class App extends Component<AppProps, AppState> {
       return {
         modalContent: <AnimationCard animation={item} />,
         modalVisible: true,
-        scrollable: false,
       };
     });
   }
@@ -72,7 +73,6 @@ class App extends Component<AppProps, AppState> {
       return {
         modalContent: '',
         modalVisible: false,
-        scrollable: true,
       };
     });
   }
@@ -86,10 +86,7 @@ class App extends Component<AppProps, AppState> {
             onModalClose={this.handleModalClose}
           />
         )}
-        <AnimationList
-          onItemClick={this.handleItemClick}
-          scrollable={this.state.scrollable}
-        />
+        <AnimationList onItemClick={this.handleItemClick} />
       </div>
     );
   }
